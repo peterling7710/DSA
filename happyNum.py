@@ -33,8 +33,8 @@ def happyNum(num):
     print(tot)
 
     if tot == 1:
-        print("Got here")
-        return True
+        
+        return
     else:
         happyNum(tot)
 
