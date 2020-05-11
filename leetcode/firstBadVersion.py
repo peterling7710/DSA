@@ -25,29 +25,18 @@ def isBadVersion(n):
 
 def firstBadVersion(self, n):
 
-        # If no memory constraints
-        a = [i for i in range (n + 1)]
+    #Binary Search solution
+    front = n
+    back = 1
 
-        def traverse(arr):
-            nonlocal a
-            
-            mid = len(arr) // 2
+    while(back < front):
+        mid = (front + back) // 2
 
-            if isBadVersion(arr[mid]) == True and isBadVersion(arr[mid-1]) == False:
-                print("Got here 1")
-                return arr[mid]
-            
-            if isBadVersion(arr[mid]) == True and len(arr) == 1:
-                print("Got here 2")
-                return arr[mid]
+        if isBadVersion(mid):
+            front = mid
+        else:
+            back = mid + 1
+    
+    return back
 
-            if isBadVersion(arr[mid]) == False:
-                traverse(arr[mid+1:])
-
-            if isBadVersion(arr[mid]) == True:
-                traverse(arr[:mid])
-            
-        out = traverse(a)
-
-        return out
     
