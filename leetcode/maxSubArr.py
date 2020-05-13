@@ -15,41 +15,39 @@ Follow up:
 If you have figured out the O(n) solution, try coding another solution using 
 the divide and conquer approach, which is more subtle.
 '''
+import math
+
+def check_sum(n, arr, i, j):
+    s = sum(arr[i:j+1])
+    print(f"sum of {arr[i]} and {arr[j]}")
+
+    if s > n:
+        n = s
+
+    return n
+
 
 def maxSubArr(nums):
-    i = 0
-    j = 0
 
-    largest = sum(nums[i:j+1])
-
-    while j >= i and j < len(nums) and i < len(nums):
-        print(i,j)
-
-        last = sum(nums[i:j])
-        current = sum(nums[i:j+1])
-
-        if current > largest:
-            largest = current
-        
-        if current < last or j == len(nums) - 1:
-            while i <= j:
-                print(i,j)
-
-                last = sum(nums[i-1:j+1])
-                current = sum(nums[i:j+1])
-
-                if current > largest:
-                    largest = current
-
-                if current > last:
-                    break
-
-                i += 1
-
-        j+=1
+    if len(nums) < 1:
+        return 0
     
-    return largest
+    local_max = nums[0]
 
-out = maxSubArr([-2,1,-3,4,-1,2,1,-5,4])
-print(out)
+    absolute_max = nums[0]
+
+    for i in range(1, len(nums)):
+        local_max = max([local_max + nums[i] , nums[i]])
+        #print(f"local max: {local_max}")
+
+
+        absolute_max = max([local_max, absolute_max])
+        #print(f"absolute max: {absolute_max}")
+    
+    return absolute_max
+
+print(maxSubArr([-2,1,-3,4,-1,2,1,-5,4]))
+print(maxSubArr([1,-1]))
+print(maxSubArr([-1,1]))
+print(maxSubArr([-2,-3,-1]))
 
