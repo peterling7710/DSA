@@ -28,7 +28,7 @@ def singleNumMem(arr):
     seen = {}
 
     #Frequency Count
-    for a in nums:
+    for a in arr:
 
         # if seen before increment
         if a in seen:
