@@ -36,36 +36,33 @@ Constraints:
 
 '''
 def rotate(nums, k):
+    n = len(nums)
+    #Account for full rotations
+    k %= n
 
-    i = 0
-    count = 0
-    temp = None
+    start = count = 0
 
-    while count < len(nums):
+    while count < n:
+
+        current, prev = start, nums[start]
         
-        #Calculate new position with rotation
-        ind = i + k
+        while True:
+            next_ind = (current + k) % n 
+            print(f"next: {next_ind}")
+            nums[next_ind], prev = prev, nums[next_ind]
+            current = next_ind
+            count += 1
 
-        #Check if at the end of the array
-        if ind >= len(nums):
-            ind -= len(nums)
+            if start == current:
+                break
         
-        temp = nums[ind]
-        curr = nums[i]
 
-        if nums[ind] == nums[i]:
-            
-        # SWAP 
-        nums[ind] = curr
-        nums[ind] = nums[i]
+        start += 1    
+        print(f"start: {start}")
 
-        i = ind
+    return nums
 
-        count += 1
-
-    return nums    
-
-print(rotate([1,2,3,4,5,6,7], 3))
+#print(rotate([1,2,3,4,5,6,7], 3))
 print(rotate([-1,-100,3,99], 2))
 
 #Output: [5,6,7,1,2,3,4]
