@@ -28,17 +28,19 @@ def singleNumMem(arr):
     seen = {}
 
     #Frequency Count
-    for a in arr:
+    for a in nums:
 
         # if seen before increment
         if a in seen:
             seen[a] += 1
         else:
             seen[a] = 1
-    
+
+    # Loop through dictionary and return if we've only seen once
     for key, val in seen.items():
         if val == 1:
             return key
+    
 
 
 
