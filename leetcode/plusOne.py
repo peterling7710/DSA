@@ -1,7 +1,6 @@
 def plusOne(digits):
 
     n = len(digits) - 1
-    carry = 0
 
     if digits[0] == 0:
         return [1]
