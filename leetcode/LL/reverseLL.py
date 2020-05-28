@@ -25,15 +25,12 @@ def reverseList(head: ListNode):
         while node.next != None:
             node = node.next
             vals.append(node.val)
-            
         
         node = d
 
         while node.next != None:
             node = node.next
             node.val = vals.pop()
-        
     
-
         return head
     
